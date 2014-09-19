@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular Sockets</title>
+  </head>
+  <body ng-app='app'>
+
+    <div ng-controller="MainCtrl">>
+      <input type="text" ng-model="message" />
+      <button id="button" ng-click="sendMessage()">PRESS ME</button>
+      <div ng-repeat="message in messages">
+        {{ message }}
+      </div>
+    </div>
+
+
+    <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
