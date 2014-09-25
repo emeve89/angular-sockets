@@ -3,7 +3,10 @@ var app = angular.module('app', []);
 app.controller('MainCtrl', ['$scope', 'socket', function($scope, socket) {
   $scope.messages = [];
 
-  socket.emit('join', 'TRADE-ID');
+  $scope.newRoom = function(id) {
+    socket.emit('join', id);
+  }
+
 
   socket.on('new_user', function(data) {
     $scope.messages.push(data.message);
