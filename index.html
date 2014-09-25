@@ -5,9 +5,11 @@
   </head>
   <body ng-app='app'>
 
-    <div ng-controller="MainCtrl">>
-      <input type="text" ng-model="message" />
-      <button id="button" ng-click="sendMessage()">PRESS ME</button>
+    <div ng-controller="MainCtrl">
+      <form>
+        <input type="text" ng-model="message" />
+        <input type="submit" id="button" ng-click="sendMessage()" />
+      </form>
       <div ng-repeat="message in messages">
         {{ message }}
       </div>
