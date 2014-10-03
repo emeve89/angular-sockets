@@ -3,10 +3,19 @@ var app = angular.module('app', []);
 app.controller('MainCtrl', ['$scope', 'socket', function($scope, socket) {
   $scope.messages = [];
 
+  var room = null
+
   $scope.newRoom = function(id) {
+    if (room) {
+      socket.emit('leave', room)
+    }
     socket.emit('join', id);
+    room = id;
   }
 
+  socket.on('no_room', function(data) {
+    console.log(data);
+  });
 
   socket.on('new_user', function(data) {
     $scope.messages.push(data.message);
@@ -27,7 +36,7 @@ app.controller('MainCtrl', ['$scope', 'socket', function($scope, socket) {
 }]);
 
 app.factory('socket', function() {
-  var socket = io.connect('http://5c216906.ngrok.com');
+  var socket = io.connect('tag-node.herokuapp.com');
 
   return socket;
 });
