@@ -36,7 +36,7 @@ app.controller('MainCtrl', ['$scope', 'socket', function($scope, socket) {
 }]);
 
 app.factory('socket', function() {
-  var socket = io.connect('tag-node.herokuapp.com');
+  var socket = io.connect('http://tag-node.herokuapp.com');
 
   return socket;
 });
